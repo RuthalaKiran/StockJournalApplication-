@@ -10,8 +10,10 @@ import {
   X,
   FileText,
   AlertCircle,
+  Sparkles,
 } from 'lucide-react';
 import { tradeService } from '../services/tradeService';
+import { aiService } from '../services/aiService';
 import { ImageUpload } from '../components/common/ImageUpload';
 import { Lightbox } from '../components/common/Lightbox';
 import { useToast } from '../components/common/Toast';
@@ -27,6 +29,7 @@ export const NewTrade = () => {
   const [fetching, setFetching] = useState(isEditMode);
   const [error, setError] = useState('');
   const [lightboxImg, setLightboxImg] = useState(null);
+  const [isDraftingNotes, setIsDraftingNotes] = useState(false);
 
   // Form State
   const [instrument, setInstrument] = useState('XAUUSD');
@@ -263,6 +266,32 @@ export const NewTrade = () => {
       setError(err.response?.data?.message || 'Failed to save trade. Please try again.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleAutoDraftNotes = async () => {
+    try {
+      setIsDraftingNotes(true);
+      toast.info('AI Router: Drafting journal notes based on your trade setup...');
+      const res = await aiService.generateNotes({
+        instrument: instrument === 'CUSTOM' ? customInstrument : instrument,
+        direction,
+        entryPrice: entryPrice ? Number(entryPrice) : 0,
+        stopLoss: stopLoss ? Number(stopLoss) : null,
+        takeProfit: takeProfit ? Number(takeProfit) : null,
+        riskRewardRatio: riskRewardRatio || autoRR || '1:2',
+        session,
+        tags,
+      });
+
+      if (res.success && res.data?.notes) {
+        setNotes((prev) => (prev ? `${prev}\n\n${res.data.notes}` : res.data.notes));
+        toast.success('Journal notes auto-drafted!');
+      }
+    } catch (err) {
+      toast.error('Failed to auto-draft observations');
+    } finally {
+      setIsDraftingNotes(false);
     }
   };
 
@@ -686,9 +715,21 @@ export const NewTrade = () => {
           </h2>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1.5">
-              Trade Reasoning & Journal Notes
-            </label>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                Trade Reasoning & Journal Notes
+              </label>
+              <button
+                type="button"
+                onClick={handleAutoDraftNotes}
+                disabled={isDraftingNotes}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 hover:bg-cyan-100 dark:hover:bg-cyan-500/20 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/30 text-[11px] font-semibold transition disabled:opacity-50"
+                title="Use AI Provider Router (Gemini/Groq) to auto-draft observations based on your entry and targets"
+              >
+                <Sparkles className={`w-3.5 h-3.5 ${isDraftingNotes ? 'animate-spin' : ''}`} />
+                <span>{isDraftingNotes ? 'Drafting Notes...' : '✨ Auto-Draft Observations'}</span>
+              </button>
+            </div>
             <textarea
               rows={4}
               value={notes}

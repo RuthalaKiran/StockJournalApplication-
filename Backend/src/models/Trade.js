@@ -108,6 +108,40 @@ const tradeSchema = new mongoose.Schema(
       enum: ['Asian', 'London', 'New York', 'London + New York', 'Other', ''],
       default: 'London',
     },
+    aiAnalysis: {
+      setupQualityScore: {
+        type: Number,
+        default: null,
+      },
+      summary: {
+        type: String,
+        default: '',
+      },
+      strengths: {
+        type: [String],
+        default: [],
+      },
+      risksOrMistakes: {
+        type: [String],
+        default: [],
+      },
+      recommendations: {
+        type: [String],
+        default: [],
+      },
+      chartObservations: {
+        type: String,
+        default: '',
+      },
+      providerUsed: {
+        type: String,
+        default: '',
+      },
+      analyzedAt: {
+        type: Date,
+        default: null,
+      },
+    },
   },
   {
     timestamps: true,

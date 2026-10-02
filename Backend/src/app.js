@@ -8,6 +8,7 @@ import tradeRoutes from './routes/tradeRoutes.js';
 import dailyPnlRoutes from './routes/dailyPnlRoutes.js';
 import analyticsRoutes from './routes/analyticsRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import aiRoutes from './routes/aiRoutes.js';
 import { notFoundHandler, errorHandler } from './middleware/errorMiddleware.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -65,6 +66,7 @@ app.use('/api/trades', tradeRoutes);
 app.use('/api/daily-pnl', dailyPnlRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/uploads', uploadRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Error Handling
 app.use(notFoundHandler);

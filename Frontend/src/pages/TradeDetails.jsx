@@ -12,8 +12,14 @@ import {
   Shield,
   Layers,
   ZoomIn,
+  Sparkles,
+  CheckCircle2,
+  AlertTriangle,
+  Lightbulb,
+  Bot,
 } from 'lucide-react';
 import { tradeService } from '../services/tradeService';
+import { aiService } from '../services/aiService';
 import { Badge } from '../components/common/Badge';
 import { Lightbox } from '../components/common/Lightbox';
 import { ConfirmDialog } from '../components/common/ConfirmDialog';
@@ -29,6 +35,7 @@ export const TradeDetails = () => {
   const [lightboxImg, setLightboxImg] = useState(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   useEffect(() => {
     const fetchTrade = async () => {
@@ -60,6 +67,25 @@ export const TradeDetails = () => {
       toast.error('Failed to delete trade');
     } finally {
       setIsDeleting(false);
+    }
+  };
+
+  const handleRunAIAnalysis = async () => {
+    try {
+      setIsAnalyzing(true);
+      toast.info('AI Provider Router: Analyzing trade & chart screenshots...');
+      const res = await aiService.analyzeTrade(id);
+      if (res.success) {
+        setTrade((prev) => ({
+          ...prev,
+          aiAnalysis: res.data,
+        }));
+        toast.success('AI Trade Review completed!');
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Failed to complete AI analysis');
+    } finally {
+      setIsAnalyzing(false);
     }
   };
 
@@ -100,7 +126,23 @@ export const TradeDetails = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center flex-wrap gap-2">
+          <button
+            onClick={handleRunAIAnalysis}
+            disabled={isAnalyzing}
+            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold shadow-md shadow-cyan-500/20 active:scale-95 transition disabled:opacity-50"
+            title="Analyze trade setup and chart screenshots with Gemini Vision & Groq"
+          >
+            <Sparkles className={`w-4 h-4 ${isAnalyzing ? 'animate-spin' : ''}`} />
+            <span>
+              {isAnalyzing
+                ? 'AI Analyzing...'
+                : trade.aiAnalysis?.setupQualityScore
+                ? 'Re-Run AI Review'
+                : 'Analyze with AI'}
+            </span>
+          </button>
+
           <Link
             to={`/journals/${trade._id}/edit`}
             className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold transition shadow-sm"
@@ -282,6 +324,142 @@ export const TradeDetails = () => {
             )}
           </div>
         </div>
+      </div>
+
+      {/* AI Trade Intelligence & Audit Section */}
+      <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-cyan-500/30 dark:border-cyan-500/20 shadow-sm space-y-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-gray-100 dark:border-[#1f293d]">
+          <div className="flex items-center gap-2">
+            <div className="p-1.5 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-500 text-white shadow-sm">
+              <Sparkles className="w-4 h-4" />
+            </div>
+            <div>
+              <h2 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                <span>AI Trade Review & Strategy Audit</span>
+              </h2>
+              <span className="text-[11px] text-gray-500 dark:text-gray-400">
+                Multimodal pattern recognition and risk assessment engine
+              </span>
+            </div>
+          </div>
+
+          {trade.aiAnalysis?.setupQualityScore && (
+            <div className="flex items-center gap-2">
+              <span className="text-xs px-2.5 py-1 rounded-full bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 text-cyan-700 dark:text-cyan-400 font-mono text-[11px]">
+                {trade.aiAnalysis.providerUsed || 'Gemini Vision'}
+              </span>
+              <span
+                className={`text-xs font-bold px-3 py-1 rounded-full font-mono ${
+                  trade.aiAnalysis.setupQualityScore >= 8
+                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
+                    : trade.aiAnalysis.setupQualityScore >= 5
+                    ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30'
+                    : 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/30'
+                }`}
+              >
+                Quality Score: {trade.aiAnalysis.setupQualityScore}/10
+              </span>
+            </div>
+          )}
+        </div>
+
+        {trade.aiAnalysis?.summary ? (
+          <div className="space-y-4">
+            {/* Overview Summary */}
+            <div className="p-3.5 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d]">
+              <p className="text-xs text-gray-800 dark:text-gray-200 leading-relaxed font-medium">
+                {trade.aiAnalysis.summary}
+              </p>
+            </div>
+
+            {/* Chart Screenshot Observations */}
+            {trade.aiAnalysis.chartObservations && (
+              <div className="p-3.5 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] space-y-1">
+                <span className="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
+                  Technical Chart Observations
+                </span>
+                <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {trade.aiAnalysis.chartObservations}
+                </p>
+              </div>
+            )}
+
+            {/* Strengths & Risks Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {/* Strengths */}
+              <div className="p-3.5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-500/20 space-y-2">
+                <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>Key Strengths</span>
+                </span>
+                <ul className="space-y-1.5 text-xs text-gray-700 dark:text-gray-300">
+                  {trade.aiAnalysis.strengths?.map((s, idx) => (
+                    <li key={idx} className="flex items-start gap-1.5">
+                      <span className="text-emerald-500 font-bold">•</span>
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Risks & Flaws */}
+              <div className="p-3.5 rounded-xl bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-500/20 space-y-2">
+                <span className="text-xs font-bold text-rose-700 dark:text-rose-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <AlertTriangle className="w-4 h-4" />
+                  <span>Risks & Execution Flaws</span>
+                </span>
+                <ul className="space-y-1.5 text-xs text-gray-700 dark:text-gray-300">
+                  {trade.aiAnalysis.risksOrMistakes?.map((r, idx) => (
+                    <li key={idx} className="flex items-start gap-1.5">
+                      <span className="text-rose-500 font-bold">•</span>
+                      <span>{r}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Recommendations */}
+            {trade.aiAnalysis.recommendations && trade.aiAnalysis.recommendations.length > 0 && (
+              <div className="p-3.5 rounded-xl bg-cyan-50/50 dark:bg-cyan-950/20 border border-cyan-200 dark:border-cyan-500/20 space-y-2">
+                <span className="text-xs font-bold text-cyan-800 dark:text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Lightbulb className="w-4 h-4" />
+                  <span>Actionable Takeaways</span>
+                </span>
+                <ul className="space-y-1 text-xs text-gray-700 dark:text-gray-300">
+                  {trade.aiAnalysis.recommendations.map((rec, idx) => (
+                    <li key={idx} className="flex items-start gap-1.5">
+                      <span className="text-cyan-500 font-bold">→</span>
+                      <span>{rec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="text-center py-6 px-4 bg-gray-50 dark:bg-[#0a0e17] rounded-xl border border-gray-200 dark:border-[#1f293d] space-y-3">
+            <Bot className="w-10 h-10 text-cyan-600 dark:text-cyan-400 mx-auto opacity-70" />
+            <div>
+              <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                No AI Analysis Generated Yet
+              </p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 max-w-md mx-auto mt-1">
+                Audits entry & exit prices, risk-to-reward ratio, session dynamics, and examines your chart screenshots using Gemini Vision with Groq fallback.
+              </p>
+            </div>
+            <button
+              onClick={handleRunAIAnalysis}
+              disabled={isAnalyzing}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold shadow-md shadow-cyan-500/20 transition disabled:opacity-50"
+            >
+              <Sparkles className={`w-4 h-4 ${isAnalyzing ? 'animate-spin' : ''}`} />
+              <span>{isAnalyzing ? 'Analyzing Trade...' : 'Generate AI Review Now'}</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Journal Notes & Reasoning */}
