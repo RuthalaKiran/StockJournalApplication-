@@ -35,7 +35,6 @@ services:
   - type: web
     name: tradejournal-frontend
     runtime: static
-    plan: free
     branch: main
     rootDir: Frontend
     buildCommand: npm install && npm run build
