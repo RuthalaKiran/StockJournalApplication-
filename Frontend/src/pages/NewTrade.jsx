@@ -304,13 +304,13 @@ export const NewTrade = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 pb-12">
+    <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6 pb-12">
       {/* Top Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-[#1f293d]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-gray-200 dark:border-[#1f293d]">
         <div className="flex items-center gap-3">
           <Link
             to="/journals"
-            className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800/80 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition shadow-sm"
+            className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800/80 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition shadow-sm shrink-0"
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
@@ -324,7 +324,7 @@ export const NewTrade = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2 w-full sm:w-auto">
           <Link
             to="/journals"
             className="px-3.5 py-2 rounded-xl text-xs font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
@@ -334,7 +334,7 @@ export const NewTrade = () => {
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium text-xs shadow-lg shadow-cyan-500/25 transition disabled:opacity-60"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium text-xs shadow-lg shadow-cyan-500/25 transition disabled:opacity-60"
           >
             <Save className="w-4 h-4" />
             <span>{loading ? 'Saving Trade...' : isEditMode ? 'Update Trade' : 'Save Trade'}</span>
@@ -349,9 +349,9 @@ export const NewTrade = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         {/* SECTION 1: TRADE SETUP */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
+        <div className="p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
           <h2 className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 flex items-center gap-2">
             <span>1. Trade Setup</span>
           </h2>
@@ -441,12 +441,12 @@ export const NewTrade = () => {
         </div>
 
         {/* SECTION 2: ENTRY & POSITION */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
+        <div className="p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
           <h2 className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
             2. Entry & Position
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             <div>
               <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1.5">
                 Entry Price *
@@ -505,8 +505,8 @@ export const NewTrade = () => {
         </div>
 
         {/* SECTION 3: RISK MANAGEMENT */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
-          <div className="flex items-center justify-between">
+        <div className="p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
             <h2 className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
               3. Risk Management
             </h2>
@@ -518,7 +518,7 @@ export const NewTrade = () => {
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
             <div>
               <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1.5">
                 Stop Loss (SL)
@@ -563,18 +563,18 @@ export const NewTrade = () => {
         </div>
 
         {/* SECTION 4: RESULT & STATUS */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
-          <div className="flex items-center justify-between">
+        <div className="p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <h2 className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
               4. Trade Outcome & Realization
             </h2>
 
             {/* Open / Closed Toggle */}
-            <div className="flex items-center gap-1.5 p-1 bg-gray-100 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] rounded-xl">
+            <div className="flex items-center gap-1 p-1 bg-gray-100 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] rounded-xl w-full sm:w-auto">
               <button
                 type="button"
                 onClick={() => setStatus('CLOSED')}
-                className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                className={`flex-1 sm:flex-initial text-center px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   status === 'CLOSED'
                     ? 'bg-cyan-500 text-white shadow-sm'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -585,7 +585,7 @@ export const NewTrade = () => {
               <button
                 type="button"
                 onClick={() => setStatus('OPEN')}
-                className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                className={`flex-1 sm:flex-initial text-center px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   status === 'OPEN'
                     ? 'bg-cyan-500 text-white shadow-sm'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -685,12 +685,12 @@ export const NewTrade = () => {
         </div>
 
         {/* SECTION 5: SCREENSHOTS */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
+        <div className="p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
           <h2 className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
             5. Trade Execution Screenshots
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <ImageUpload
               label="Before Trade Screenshot (Setup / Analysis)"
               value={beforeTradeImage}
@@ -708,14 +708,14 @@ export const NewTrade = () => {
         </div>
 
         {/* SECTION 6: JOURNAL & TAGS */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
+        <div className="p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
           <h2 className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 flex items-center gap-2">
             <FileText className="w-4 h-4" />
             <span>6. Journal Observations & Tags</span>
           </h2>
 
           <div>
-            <div className="flex items-center justify-between mb-1.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
               <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                 Trade Reasoning & Journal Notes
               </label>
@@ -723,7 +723,7 @@ export const NewTrade = () => {
                 type="button"
                 onClick={handleAutoDraftNotes}
                 disabled={isDraftingNotes}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 hover:bg-cyan-100 dark:hover:bg-cyan-500/20 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/30 text-[11px] font-semibold transition disabled:opacity-50"
+                className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-500/10 hover:bg-cyan-100 dark:hover:bg-cyan-500/20 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/30 text-[11px] font-semibold transition disabled:opacity-50 w-full sm:w-auto"
                 title="Use AI Provider Router (Gemini/Groq) to auto-draft observations based on your entry and targets"
               >
                 <Sparkles className={`w-3.5 h-3.5 ${isDraftingNotes ? 'animate-spin' : ''}`} />
@@ -780,7 +780,7 @@ export const NewTrade = () => {
             </div>
 
             {/* Custom Tag Input */}
-            <div className="flex gap-2 max-w-sm">
+            <div className="flex gap-2 w-full sm:max-w-sm">
               <input
                 type="text"
                 value={tagInput}
@@ -792,12 +792,12 @@ export const NewTrade = () => {
                   }
                 }}
                 placeholder="Add custom tag..."
-                className="flex-1 py-1.5 px-3 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-300 dark:border-[#1f293d] text-gray-900 dark:text-white text-xs focus:outline-none focus:border-cyan-500"
+                className="flex-1 min-w-0 py-2 px-3 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-300 dark:border-[#1f293d] text-gray-900 dark:text-white text-xs focus:outline-none focus:border-cyan-500"
               />
               <button
                 type="button"
                 onClick={() => handleAddTag(tagInput)}
-                className="px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-cyan-600 hover:text-white dark:bg-gray-800 text-gray-700 dark:text-white text-xs font-medium transition"
+                className="px-4 py-2 rounded-xl bg-gray-100 hover:bg-cyan-600 hover:text-white dark:bg-gray-800 text-gray-700 dark:text-white text-xs font-medium transition shrink-0"
               >
                 Add
               </button>
@@ -806,17 +806,17 @@ export const NewTrade = () => {
         </div>
 
         {/* SECTION 7: SAVE & CANCEL */}
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-[#1f293d]">
+        <div className="flex flex-col-reverse sm:flex-row items-center justify-end gap-2.5 sm:gap-3 pt-4 border-t border-gray-200 dark:border-[#1f293d]">
           <Link
             to="/journals"
-            className="px-4 py-2.5 rounded-xl text-xs font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
+            className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl text-xs font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
           >
             Cancel
           </Link>
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-xs shadow-lg shadow-cyan-500/25 active:scale-95 transition disabled:opacity-60"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-xs shadow-lg shadow-cyan-500/25 active:scale-95 transition disabled:opacity-60"
           >
             <Save className="w-4 h-4" />
             <span>{loading ? 'Saving Trade...' : isEditMode ? 'Update Trade' : 'Save Trade'}</span>

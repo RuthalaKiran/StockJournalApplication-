@@ -127,14 +127,14 @@ export const Settings = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
       <div className="pb-2 border-b border-gray-200 dark:border-[#1f293d]">
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Settings & Preferences</h1>
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Settings & Preferences</h1>
         <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
           Manage your trader profile, authentication security, and terminal defaults
         </p>
       </div>
 
       {/* Profile Section */}
-      <div className="p-6 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-5">
+      <div className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4 sm:space-y-5">
         <div className="flex items-center gap-2.5 pb-2 border-b border-gray-200 dark:border-[#1f293d]">
           <User className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
           <h2 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
@@ -143,7 +143,7 @@ export const Settings = () => {
         </div>
 
         <form onSubmit={handleUpdateProfile} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <div>
               <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1.5">
                 Full Name
@@ -187,7 +187,7 @@ export const Settings = () => {
             <button
               type="submit"
               disabled={profileLoading}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs shadow-md transition disabled:opacity-60"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs shadow-md transition disabled:opacity-60"
             >
               <Save className="w-4 h-4" />
               <span>{profileLoading ? 'Saving...' : 'Update Profile'}</span>
@@ -197,7 +197,7 @@ export const Settings = () => {
       </div>
 
       {/* Terminal Preferences */}
-      <div className="p-6 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-5">
+      <div className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4 sm:space-y-5">
         <div className="flex items-center gap-2.5 pb-2 border-b border-gray-200 dark:border-[#1f293d]">
           <Sliders className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
           <h2 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
@@ -206,7 +206,7 @@ export const Settings = () => {
         </div>
 
         <form onSubmit={handleUpdatePreferences} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <div>
               <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1.5">
                 Default Currency
@@ -260,7 +260,7 @@ export const Settings = () => {
             <button
               type="submit"
               disabled={prefLoading}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs shadow-md transition disabled:opacity-60"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs shadow-md transition disabled:opacity-60"
             >
               <Save className="w-4 h-4" />
               <span>{prefLoading ? 'Saving...' : 'Save Preferences'}</span>
@@ -270,7 +270,7 @@ export const Settings = () => {
       </div>
 
       {/* Security & Password */}
-      <div className="p-6 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-5">
+      <div className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4 sm:space-y-5">
         <div className="flex items-center gap-2.5 pb-2 border-b border-gray-200 dark:border-[#1f293d]">
           <Lock className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
           <h2 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
@@ -286,7 +286,7 @@ export const Settings = () => {
         )}
 
         <form onSubmit={handleChangePassword} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <div>
               <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1.5">
                 Current Password
@@ -334,7 +334,7 @@ export const Settings = () => {
             <button
               type="submit"
               disabled={passwordLoading}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-white font-semibold text-xs shadow-sm transition disabled:opacity-60"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-white font-semibold text-xs shadow-sm transition disabled:opacity-60"
             >
               <Lock className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
               <span>{passwordLoading ? 'Updating...' : 'Change Password'}</span>
@@ -344,7 +344,7 @@ export const Settings = () => {
       </div>
 
       {/* Sign Out Card */}
-      <div className="p-6 rounded-2xl bg-rose-50 dark:bg-rose-500/5 border border-rose-200 dark:border-rose-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
+      <div className="p-4 sm:p-6 rounded-2xl bg-rose-50 dark:bg-rose-500/5 border border-rose-200 dark:border-rose-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
         <div>
           <h3 className="text-sm font-bold text-gray-900 dark:text-white">Sign Out of Terminal Session</h3>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
@@ -353,7 +353,7 @@ export const Settings = () => {
         </div>
         <button
           onClick={logout}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs shadow-md transition self-start sm:self-auto"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs shadow-md transition shrink-0"
         >
           <LogOut className="w-4 h-4" />
           <span>Sign Out</span>

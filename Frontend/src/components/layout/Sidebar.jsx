@@ -129,7 +129,7 @@ export const Sidebar = ({ mobileOpen, onMobileClose }) => {
             className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
             onClick={onMobileClose}
           />
-          <div className="fixed inset-y-0 left-0 w-72 bg-white dark:bg-[#0d121f] p-5 shadow-2xl border-r border-gray-200 dark:border-[#1f293d] z-50 animate-in slide-in-from-left duration-200">
+          <div className="fixed inset-y-0 left-0 w-72 max-w-[82vw] bg-white dark:bg-[#0d121f] p-4 sm:p-5 shadow-2xl border-r border-gray-200 dark:border-[#1f293d] z-50 animate-in slide-in-from-left duration-200 overflow-y-auto">
             {sidebarContent}
           </div>
         </div>

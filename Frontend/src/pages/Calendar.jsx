@@ -173,10 +173,10 @@ export const Calendar = () => {
   return (
     <div className="space-y-6">
       {/* Top Header & Month Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-gray-200 dark:border-[#1f293d]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-2 border-b border-gray-200 dark:border-[#1f293d]">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2.5">
-            <CalendarIcon className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2.5">
+            <CalendarIcon className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-600 dark:text-cyan-400" />
             <span>Trading Calendar</span>
           </h1>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
@@ -185,8 +185,8 @@ export const Calendar = () => {
         </div>
 
         {/* Month Navigation & Today Button */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-xl p-1 shadow-sm">
+        <div className="flex items-center justify-between sm:justify-end gap-2 sm:gap-3 w-full sm:w-auto">
+          <div className="flex items-center bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-xl p-1 shadow-sm flex-1 sm:flex-initial justify-between sm:justify-start">
             <button
               onClick={handlePrevMonth}
               className="p-1.5 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition"
@@ -195,7 +195,7 @@ export const Calendar = () => {
               <ChevronLeft className="w-4 h-4" />
             </button>
 
-            <span className="px-3 text-xs font-bold text-gray-900 dark:text-white min-w-[130px] text-center uppercase tracking-wider">
+            <span className="px-2 sm:px-3 text-xs font-bold text-gray-900 dark:text-white min-w-[110px] sm:min-w-[130px] text-center uppercase tracking-wider">
               {monthNames[currentMonth]} {currentYear}
             </span>
 
@@ -210,7 +210,7 @@ export const Calendar = () => {
 
           <button
             onClick={handleJumpToday}
-            className="px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold transition shadow-sm"
+            className="px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold transition shadow-sm shrink-0"
           >
             Today
           </button>
@@ -218,14 +218,14 @@ export const Calendar = () => {
       </div>
 
       {/* Month Realized Metric Card */}
-      <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] flex items-center justify-between shadow-sm">
-        <div className="flex items-center gap-4">
+      <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm">
+        <div className="flex items-center gap-3 sm:gap-4">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
               {monthNames[currentMonth]} Net P/L
             </span>
             <p
-              className={`text-xl font-bold font-mono ${
+              className={`text-lg sm:text-xl font-bold font-mono ${
                 monthNetPnL > 0
                   ? 'text-emerald-600 dark:text-emerald-400'
                   : monthNetPnL < 0
@@ -241,26 +241,26 @@ export const Calendar = () => {
             <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
               Total Realized Trades
             </span>
-            <p className="text-xl font-bold font-mono text-gray-900 dark:text-white">{monthTradesCount}</p>
+            <p className="text-lg sm:text-xl font-bold font-mono text-gray-900 dark:text-white">{monthTradesCount}</p>
           </div>
         </div>
 
         {/* Legend */}
-        <div className="hidden md:flex items-center gap-3 text-[11px]">
-          <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/30 border border-emerald-500" />
-            P/L &gt; 0 (Light Green)
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] pt-2 md:pt-0 border-t md:border-t-0 border-gray-100 dark:border-[#1f293d]">
+          <span className="flex items-center gap-1 sm:gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
+            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-500/30 border border-emerald-500" />
+            P/L &gt; 0 (Win)
           </span>
-          <span className="flex items-center gap-1.5 text-rose-600 dark:text-rose-400 font-medium">
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/30 border border-rose-500" />
-            P/L &lt; 0 (Light Red)
+          <span className="flex items-center gap-1 sm:gap-1.5 text-rose-600 dark:text-rose-400 font-medium">
+            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-rose-500/30 border border-rose-500" />
+            P/L &lt; 0 (Loss)
           </span>
-          <span className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 font-medium">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/30 border border-amber-500" />
-            P/L = 0 (Light Orange)
+          <span className="flex items-center gap-1 sm:gap-1.5 text-amber-600 dark:text-amber-400 font-medium">
+            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-amber-500/30 border border-amber-500" />
+            BE
           </span>
-          <span className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 font-medium">
-            <span className="w-2.5 h-2.5 rounded-full bg-gray-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-700" />
+          <span className="flex items-center gap-1 sm:gap-1.5 text-gray-500 dark:text-gray-400 font-medium">
+            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-gray-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-700" />
             No P/L
           </span>
         </div>
@@ -269,14 +269,14 @@ export const Calendar = () => {
       {/* Main Calendar Grid */}
       <div className="bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl overflow-hidden shadow-sm dark:shadow-2xl">
         {/* Days of Week Header */}
-        <div className="grid grid-cols-7 border-b border-gray-200 dark:border-[#1f293d] bg-gray-50 dark:bg-[#0d131f] text-center text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400 py-3">
-          <span>Mon</span>
-          <span>Tue</span>
-          <span>Wed</span>
-          <span>Thu</span>
-          <span>Fri</span>
-          <span>Sat</span>
-          <span>Sun</span>
+        <div className="grid grid-cols-7 border-b border-gray-200 dark:border-[#1f293d] bg-gray-50 dark:bg-[#0d131f] text-center text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400 py-2 sm:py-3">
+          <span><span className="sm:hidden">M</span><span className="hidden sm:inline">Mon</span></span>
+          <span><span className="sm:hidden">T</span><span className="hidden sm:inline">Tue</span></span>
+          <span><span className="sm:hidden">W</span><span className="hidden sm:inline">Wed</span></span>
+          <span><span className="sm:hidden">T</span><span className="hidden sm:inline">Thu</span></span>
+          <span><span className="sm:hidden">F</span><span className="hidden sm:inline">Fri</span></span>
+          <span><span className="sm:hidden">S</span><span className="hidden sm:inline">Sat</span></span>
+          <span><span className="sm:hidden">S</span><span className="hidden sm:inline">Sun</span></span>
         </div>
 
         {/* Month Grid Cells */}
@@ -287,9 +287,9 @@ export const Calendar = () => {
             return (
               <div
                 key={`prev-${i}`}
-                className="min-h-[90px] sm:min-h-[110px] p-2 bg-gray-100/70 dark:bg-[#0a0e17]/60 text-gray-400 dark:text-gray-600 flex flex-col justify-between cursor-not-allowed select-none"
+                className="min-h-[58px] sm:min-h-[85px] md:min-h-[105px] p-1 sm:p-2 bg-gray-100/70 dark:bg-[#0a0e17]/60 text-gray-400 dark:text-gray-600 flex flex-col justify-between cursor-not-allowed select-none"
               >
-                <span className="text-xs font-mono">{dayNum}</span>
+                <span className="text-[10px] sm:text-xs font-mono">{dayNum}</span>
               </div>
             );
           })}
@@ -336,12 +336,12 @@ export const Calendar = () => {
               <div
                 key={`curr-${dayNum}`}
                 onClick={() => handleDateClick(dayNum)}
-                className={`min-h-[90px] sm:min-h-[110px] p-2 sm:p-2.5 flex flex-col justify-between transition-all cursor-pointer select-none group relative ${cellBgClass}`}
+                className={`min-h-[58px] sm:min-h-[85px] md:min-h-[105px] p-1 sm:p-2 md:p-2.5 flex flex-col justify-between transition-all cursor-pointer select-none group relative ${cellBgClass}`}
               >
                 {/* Date header */}
                 <div className="flex items-center justify-between">
                   <span
-                    className={`text-xs font-mono font-semibold rounded-md px-1.5 py-0.5 ${
+                    className={`text-[10px] sm:text-xs font-mono font-semibold rounded sm:rounded-md px-1 py-0.5 ${
                       isToday
                         ? 'bg-cyan-500 text-white shadow-sm'
                         : 'text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
@@ -351,27 +351,27 @@ export const Calendar = () => {
                   </span>
 
                   {dayRecord?.tradesCount > 0 && (
-                    <span className="text-[10px] font-mono text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-[#0a0e17]/70 px-1 rounded border border-gray-200 dark:border-[#1f293d]">
+                    <span className="text-[8px] sm:text-[10px] font-mono text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-[#0a0e17]/70 px-0.5 sm:px-1 rounded border border-gray-200 dark:border-[#1f293d]">
                       {dayRecord.tradesCount}T
                     </span>
                   )}
                 </div>
 
                 {/* Day Realized P/L Value */}
-                <div className="mt-1 flex flex-col">
+                <div className="mt-0.5 sm:mt-1 flex flex-col">
                   {hasData ? (
                     <>
-                      <span className={`text-xs sm:text-sm font-mono tracking-tight ${pnlTextClass}`}>
+                      <span className={`text-[10px] sm:text-xs md:text-sm font-mono tracking-tight truncate ${pnlTextClass}`}>
                         {pnl > 0 ? `+$${pnl}` : `$${pnl}`}
                       </span>
                       {dayRecord.hasManual && (
-                        <span className="text-[9px] uppercase tracking-wider text-cyan-600 dark:text-cyan-400 font-semibold mt-0.5">
+                        <span className="hidden xs:inline text-[8px] sm:text-[9px] uppercase tracking-wider text-cyan-600 dark:text-cyan-400 font-semibold mt-0.5">
                           Manual
                         </span>
                       )}
                     </>
                   ) : (
-                    <span className="text-[11px] text-gray-400 dark:text-gray-600">—</span>
+                    <span className="text-[10px] sm:text-[11px] text-gray-400 dark:text-gray-600">—</span>
                   )}
                 </div>
               </div>
@@ -385,9 +385,9 @@ export const Calendar = () => {
             return Array.from({ length: remaining }).map((_, i) => (
               <div
                 key={`next-${i}`}
-                className="min-h-[90px] sm:min-h-[110px] p-2 bg-gray-100/70 dark:bg-[#0a0e17]/60 text-gray-400 dark:text-gray-600 flex flex-col justify-between cursor-not-allowed select-none"
+                className="min-h-[58px] sm:min-h-[85px] md:min-h-[105px] p-1 sm:p-2 bg-gray-100/70 dark:bg-[#0a0e17]/60 text-gray-400 dark:text-gray-600 flex flex-col justify-between cursor-not-allowed select-none"
               >
-                <span className="text-xs font-mono">{i + 1}</span>
+                <span className="text-[10px] sm:text-xs font-mono">{i + 1}</span>
               </div>
             ));
           })()}
@@ -396,17 +396,17 @@ export const Calendar = () => {
 
       {/* Date Detail & Manual P/L Modal */}
       {selectedDay && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
           <div
             className="fixed inset-0 bg-black/50 dark:bg-black/75 backdrop-blur-sm animate-in fade-in duration-150"
             onClick={() => setSelectedDay(null)}
           />
 
-          <div className="relative w-full max-w-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl shadow-2xl p-6 z-10 max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-150 space-y-5">
+          <div className="relative w-full max-w-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl shadow-2xl p-4 sm:p-6 z-10 max-h-[92dvh] overflow-y-auto animate-in zoom-in-95 duration-150 space-y-4 sm:space-y-5">
             {/* Modal Header */}
             <div className="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-[#1f293d]">
               <div>
-                <h3 className="text-base font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2">
+                <h3 className="text-sm sm:text-base font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2">
                   <CalendarIcon className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                   <span>
                     {new Date(selectedDay.date + 'T00:00:00').toLocaleDateString('en-US', {
@@ -431,13 +431,13 @@ export const Calendar = () => {
             </div>
 
             {/* Current Day PnL Summary */}
-            <div className="p-4 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] flex items-center justify-between">
+            <div className="p-3 sm:p-4 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   Current Effective P/L
                 </span>
                 <p
-                  className={`text-2xl font-bold font-mono mt-1 ${
+                  className={`text-xl sm:text-2xl font-bold font-mono mt-1 ${
                     selectedDay.effectivePnL > 0
                       ? 'text-emerald-600 dark:text-emerald-400'
                       : selectedDay.effectivePnL < 0
@@ -540,7 +540,7 @@ export const Calendar = () => {
             {/* Manual Daily P/L Entry Form */}
             <form
               onSubmit={handleSaveManualPnL}
-              className="p-4 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] space-y-3"
+              className="p-3.5 sm:p-4 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] space-y-3"
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
@@ -589,11 +589,11 @@ export const Calendar = () => {
                 </div>
               </div>
 
-              <div className="flex justify-end pt-1">
+              <div className="flex flex-col sm:flex-row justify-end pt-1">
                 <button
                   type="submit"
                   disabled={savingManual}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-sm transition disabled:opacity-60"
+                  className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-sm transition disabled:opacity-60"
                 >
                   <Save className="w-3.5 h-3.5" />
                   <span>{savingManual ? 'Saving...' : 'Save Daily P/L'}</span>

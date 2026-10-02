@@ -288,29 +288,29 @@ How can I help sharpen your edge today?`,
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-5rem)] max-w-6xl mx-auto space-y-4">
+    <div className="flex flex-col h-[calc(100dvh-5.5rem)] sm:h-[calc(100vh-5rem)] max-w-6xl mx-auto space-y-3 sm:space-y-4">
       {/* Top Header Card */}
-      <div className="bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl p-4 sm:p-5 shadow-sm transition-colors">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shadow-sm shrink-0">
-              <Bot className="w-6 h-6 animate-pulse" />
+      <div className="bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl p-3.5 sm:p-5 shadow-sm transition-colors">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shadow-sm shrink-0">
+              <Bot className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <h1 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">
                   AlphaCoach
                 </h1>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider bg-cyan-100 text-cyan-800 dark:bg-cyan-950/80 dark:text-cyan-400 border border-cyan-300 dark:border-cyan-700/60 uppercase">
+                <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold tracking-wider bg-cyan-100 text-cyan-800 dark:bg-cyan-950/80 dark:text-cyan-400 border border-cyan-300 dark:border-cyan-700/60 uppercase">
                   AI Mentor
                 </span>
-                <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                <span className="hidden xs:inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-emerald-600 dark:text-emerald-400 font-medium">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                  Dual Engine Online
+                  Dual Engine
                 </span>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                Institutional risk auditor & trading psychologist powered by Gemini Vision + Groq
+              <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                Institutional risk auditor & trading psychologist
               </p>
             </div>
           </div>
@@ -318,7 +318,7 @@ How can I help sharpen your edge today?`,
           <div className="flex items-center gap-2 self-end sm:self-center">
             <button
               onClick={handleClearChat}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-gray-100 dark:hover:bg-gray-800/60 border border-gray-200 dark:border-gray-700/60 transition-colors"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-gray-100 dark:hover:bg-gray-800/60 border border-gray-200 dark:border-gray-700/60 transition-colors"
               title="Reset conversation"
             >
               <Trash2 className="w-3.5 h-3.5" />
@@ -329,37 +329,37 @@ How can I help sharpen your edge today?`,
 
         {/* Live Trader Intelligence Strip */}
         {metrics && (
-          <div className="mt-4 pt-3 border-t border-gray-100 dark:border-gray-800/80 grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-            <div className="bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2.5 border border-gray-200/60 dark:border-gray-800/60">
-              <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
+          <div className="mt-3 sm:mt-4 pt-3 border-t border-gray-100 dark:border-gray-800/80 grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-2.5">
+            <div className="bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2 sm:p-2.5 border border-gray-200/60 dark:border-gray-800/60">
+              <span className="text-[9px] sm:text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
                 Total Trades
               </span>
-              <span className="text-sm font-bold text-gray-900 dark:text-gray-100 mt-0.5 block">
+              <span className="text-xs sm:text-sm font-bold text-gray-900 dark:text-gray-100 mt-0.5 block">
                 {metrics.totalTrades}
               </span>
             </div>
-            <div className="bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2.5 border border-gray-200/60 dark:border-gray-800/60">
-              <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
+            <div className="bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2 sm:p-2.5 border border-gray-200/60 dark:border-gray-800/60">
+              <span className="text-[9px] sm:text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
                 Win Rate
               </span>
-              <span className="text-sm font-bold text-cyan-600 dark:text-cyan-400 mt-0.5 block">
+              <span className="text-xs sm:text-sm font-bold text-cyan-600 dark:text-cyan-400 mt-0.5 block">
                 {metrics.winRate}%
               </span>
             </div>
-            <div className="bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2.5 border border-gray-200/60 dark:border-gray-800/60">
-              <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
+            <div className="bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2 sm:p-2.5 border border-gray-200/60 dark:border-gray-800/60">
+              <span className="text-[9px] sm:text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
                 Profit Factor
               </span>
-              <span className="text-sm font-bold text-purple-600 dark:text-purple-400 mt-0.5 block">
+              <span className="text-xs sm:text-sm font-bold text-purple-600 dark:text-purple-400 mt-0.5 block">
                 {metrics.profitFactor}
               </span>
             </div>
-            <div className="bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2.5 border border-gray-200/60 dark:border-gray-800/60">
-              <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
+            <div className="bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2 sm:p-2.5 border border-gray-200/60 dark:border-gray-800/60">
+              <span className="text-[9px] sm:text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
                 Realized P/L
               </span>
               <span
-                className={`text-sm font-bold mt-0.5 block ${
+                className={`text-xs sm:text-sm font-bold mt-0.5 block ${
                   metrics.totalPnL >= 0
                     ? 'text-emerald-600 dark:text-emerald-400'
                     : 'text-rose-600 dark:text-rose-400'
@@ -368,11 +368,11 @@ How can I help sharpen your edge today?`,
                 {metrics.totalPnL >= 0 ? `+$${metrics.totalPnL}` : `-$${Math.abs(metrics.totalPnL)}`}
               </span>
             </div>
-            <div className="col-span-2 sm:col-span-1 bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2.5 border border-gray-200/60 dark:border-gray-800/60">
-              <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
+            <div className="col-span-2 sm:col-span-1 bg-gray-50 dark:bg-[#0a0e17]/60 rounded-xl p-2 sm:p-2.5 border border-gray-200/60 dark:border-gray-800/60">
+              <span className="text-[9px] sm:text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
                 Max Drawdown
               </span>
-              <span className="text-sm font-bold text-amber-600 dark:text-amber-400 mt-0.5 block">
+              <span className="text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400 mt-0.5 block">
                 ${metrics.maxDrawdown}
               </span>
             </div>
@@ -383,22 +383,22 @@ How can I help sharpen your edge today?`,
       {/* Main Chat Conversation Container */}
       <div className="flex-1 bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl flex flex-col overflow-hidden shadow-sm transition-colors">
         {/* Messages Stream */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-6 space-y-3.5 sm:space-y-4">
           {messages.map((msg, idx) => {
             const isUser = msg.role === 'user';
             return (
               <div
                 key={idx}
-                className={`flex gap-3 sm:gap-4 ${isUser ? 'justify-end' : 'justify-start'}`}
+                className={`flex gap-2 sm:gap-4 ${isUser ? 'justify-end' : 'justify-start'}`}
               >
                 {!isUser && (
-                  <div className="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0 mt-0.5 border border-cyan-200 dark:border-cyan-500/30 shadow-sm">
-                    <Bot className="w-4 h-4" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0 mt-0.5 border border-cyan-200 dark:border-cyan-500/30 shadow-sm">
+                    <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                 )}
 
                 <div
-                  className={`relative group max-w-[85%] sm:max-w-[78%] rounded-2xl px-4 py-3 shadow-sm ${
+                  className={`relative group max-w-[92%] sm:max-w-[78%] rounded-2xl px-3 sm:px-4 py-2 sm:py-3 shadow-sm ${
                     isUser
                       ? 'bg-gradient-to-r from-cyan-600 to-cyan-500 text-white rounded-tr-none'
                       : msg.isError
@@ -407,16 +407,16 @@ How can I help sharpen your edge today?`,
                   }`}
                 >
                   {/* Message Sender Header */}
-                  <div className="flex items-center justify-between gap-4 mb-1">
+                  <div className="flex items-center justify-between gap-3 sm:gap-4 mb-1">
                     <span
-                      className={`text-[10px] font-semibold uppercase tracking-wider ${
+                      className={`text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider ${
                         isUser ? 'text-cyan-100' : 'text-cyan-600 dark:text-cyan-400'
                       }`}
                     >
                       {isUser ? user?.name || 'You' : 'AlphaCoach'}
                     </span>
                     <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity">
-                      <span className={`text-[10px] ${isUser ? 'text-cyan-100' : 'text-gray-400'}`}>
+                      <span className={`text-[9px] sm:text-[10px] ${isUser ? 'text-cyan-100' : 'text-gray-400'}`}>
                         {new Date(msg.timestamp).toLocaleTimeString([], {
                           hour: '2-digit',
                           minute: '2-digit',
@@ -440,15 +440,15 @@ How can I help sharpen your edge today?`,
 
                   {/* Message Content */}
                   {isUser ? (
-                    <p className="text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                    <p className="text-xs sm:text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>
                   ) : (
                     renderFormattedMessage(msg.content)
                   )}
                 </div>
 
                 {isUser && (
-                  <div className="w-8 h-8 rounded-xl bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center justify-center shrink-0 mt-0.5 border border-gray-300 dark:border-gray-600 shadow-sm">
-                    <User className="w-4 h-4" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center justify-center shrink-0 mt-0.5 border border-gray-300 dark:border-gray-600 shadow-sm">
+                    <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                 )}
               </div>
@@ -457,17 +457,17 @@ How can I help sharpen your edge today?`,
 
           {/* Typing/Analyzing Indicator */}
           {loading && (
-            <div className="flex gap-3 sm:gap-4 justify-start items-center">
-              <div className="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0 border border-cyan-200 dark:border-cyan-500/30">
-                <Bot className="w-4 h-4 animate-spin" />
+            <div className="flex gap-2 sm:gap-4 justify-start items-center">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0 border border-cyan-200 dark:border-cyan-500/30">
+                <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin" />
               </div>
-              <div className="bg-gray-50 dark:bg-[#0d121f] border border-gray-200 dark:border-[#1e273a] rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-3 shadow-sm">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-cyan-500 animate-bounce" />
-                  <span className="w-2 h-2 rounded-full bg-cyan-500 animate-bounce [animation-delay:0.2s]" />
-                  <span className="w-2 h-2 rounded-full bg-cyan-500 animate-bounce [animation-delay:0.4s]" />
+              <div className="bg-gray-50 dark:bg-[#0d121f] border border-gray-200 dark:border-[#1e273a] rounded-2xl rounded-tl-none px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 shadow-sm">
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-500 animate-bounce" />
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-500 animate-bounce [animation-delay:0.2s]" />
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-500 animate-bounce [animation-delay:0.4s]" />
                 </div>
-                <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+                <span className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 font-medium">
                   AlphaCoach is reviewing your trade data and risk parameters...
                 </span>
               </div>
@@ -478,7 +478,7 @@ How can I help sharpen your edge today?`,
         </div>
 
         {/* Quick Prompt Chips (displayed above input) */}
-        <div className="px-4 py-2.5 bg-gray-50/60 dark:bg-[#0d121f]/50 border-t border-gray-200/80 dark:border-gray-800/80">
+        <div className="px-3 sm:px-4 py-2 sm:py-2.5 bg-gray-50/60 dark:bg-[#0d121f]/50 border-t border-gray-200/80 dark:border-gray-800/80">
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
             <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider shrink-0 flex items-center gap-1 mr-1">
               <Sparkles className="w-3 h-3 text-cyan-500" />
@@ -491,7 +491,7 @@ How can I help sharpen your edge today?`,
                   key={i}
                   onClick={() => handleSend(p.prompt)}
                   disabled={loading}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-[#111827] hover:bg-cyan-50 dark:hover:bg-cyan-500/10 border border-gray-200 dark:border-gray-700 hover:border-cyan-300 dark:hover:border-cyan-500/30 text-gray-700 dark:text-gray-300 text-xs font-medium whitespace-nowrap transition-all shadow-2xs group"
+                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-white dark:bg-[#111827] hover:bg-cyan-50 dark:hover:bg-cyan-500/10 border border-gray-200 dark:border-gray-700 hover:border-cyan-300 dark:hover:border-cyan-500/30 text-gray-700 dark:text-gray-300 text-[11px] sm:text-xs font-medium whitespace-nowrap transition-all shadow-2xs group"
                 >
                   <Icon className={`w-3.5 h-3.5 ${p.color} group-hover:scale-110 transition-transform`} />
                   <span>{p.title}</span>
@@ -502,7 +502,7 @@ How can I help sharpen your edge today?`,
         </div>
 
         {/* Input Bar */}
-        <div className="p-3 sm:p-4 bg-white dark:bg-[#111827] border-t border-gray-200 dark:border-[#1f293d]">
+        <div className="p-2.5 sm:p-4 bg-white dark:bg-[#111827] border-t border-gray-200 dark:border-[#1f293d]">
           <div className="flex items-end gap-2 sm:gap-3">
             <div className="flex-1 relative">
               <textarea
@@ -511,25 +511,25 @@ How can I help sharpen your edge today?`,
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 rows={1}
-                placeholder="Ask AlphaCoach about risk management, psychology, trade setups... (Enter to send)"
+                placeholder="Ask AlphaCoach about risk, setups, psychology..."
                 disabled={loading}
-                className="w-full resize-none max-h-32 min-h-[44px] py-2.5 px-3.5 text-sm rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-gray-700/80 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-500 transition-all"
+                className="w-full resize-none max-h-32 min-h-[40px] sm:min-h-[44px] py-2 sm:py-2.5 px-3 sm:px-3.5 text-xs sm:text-sm rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-gray-700/80 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-500 transition-all"
               />
             </div>
 
             <button
               onClick={() => handleSend()}
               disabled={loading || !inputValue.trim()}
-              className="h-11 px-4 sm:px-5 rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all shrink-0 active:scale-95 cursor-pointer"
+              className="h-10 sm:h-11 px-3.5 sm:px-5 rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all shrink-0 active:scale-95 cursor-pointer"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Send</span>
             </button>
           </div>
 
-          <div className="flex items-center justify-between text-[11px] text-gray-400 dark:text-gray-500 mt-2 px-1">
-            <span>Press <kbd className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-[10px]">Enter</kbd> to send, <kbd className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-[10px]">Shift+Enter</kbd> for new line</span>
-            <span>AlphaCoach educational intelligence</span>
+          <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-gray-400 dark:text-gray-500 mt-1.5 sm:mt-2 px-1">
+            <span className="hidden sm:inline">Press <kbd className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-[10px]">Enter</kbd> to send, <kbd className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-[10px]">Shift+Enter</kbd> for new line</span>
+            <span className="truncate">AlphaCoach AI Mentor</span>
           </div>
         </div>
       </div>

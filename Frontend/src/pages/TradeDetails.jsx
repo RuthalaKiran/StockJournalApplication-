@@ -100,37 +100,37 @@ export const TradeDetails = () => {
   if (!trade) return null;
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6 pb-12">
+    <div className="max-w-5xl mx-auto space-y-4 sm:space-y-6 pb-12">
       {/* Top Header & Navigation */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b border-gray-200 dark:border-[#1f293d]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-3 border-b border-gray-200 dark:border-[#1f293d]">
         <div className="flex items-center gap-3">
           <Link
             to="/journals"
-            className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800/80 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition shadow-sm"
+            className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800/80 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition shadow-sm shrink-0"
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
-            <div className="flex items-center gap-2.5">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+            <div className="flex items-center flex-wrap gap-2">
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
                 {trade.instrument}
               </h1>
               <Badge variant={trade.direction}>{trade.direction}</Badge>
               <Badge variant={trade.result}>{trade.result}</Badge>
               <Badge variant={trade.status}>{trade.status}</Badge>
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
               Executed on {new Date(trade.entryDate).toLocaleDateString()} at {trade.entryTime}
             </p>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center flex-wrap gap-2">
+        <div className="flex items-center flex-wrap gap-2 w-full sm:w-auto">
           <button
             onClick={handleRunAIAnalysis}
             disabled={isAnalyzing}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold shadow-md shadow-cyan-500/20 active:scale-95 transition disabled:opacity-50"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold shadow-md shadow-cyan-500/20 active:scale-95 transition disabled:opacity-50"
             title="Analyze trade setup and chart screenshots with Gemini Vision & Groq"
           >
             <Sparkles className={`w-4 h-4 ${isAnalyzing ? 'animate-spin' : ''}`} />
@@ -138,21 +138,21 @@ export const TradeDetails = () => {
               {isAnalyzing
                 ? 'AI Analyzing...'
                 : trade.aiAnalysis?.setupQualityScore
-                ? 'Re-Run AI Review'
+                ? 'Re-Run AI'
                 : 'Analyze with AI'}
             </span>
           </button>
 
           <Link
             to={`/journals/${trade._id}/edit`}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold transition shadow-sm"
+            className="flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold transition shadow-sm"
           >
             <Edit2 className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-            <span>Edit Entry</span>
+            <span>Edit</span>
           </Link>
           <button
             onClick={() => setConfirmDelete(true)}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 text-xs font-semibold transition"
+            className="flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 text-xs font-semibold transition"
           >
             <Trash2 className="w-4 h-4" />
             <span>Delete</span>
@@ -161,14 +161,14 @@ export const TradeDetails = () => {
       </div>
 
       {/* Trade PnL Summary Banner */}
-      <div className="p-6 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm dark:shadow-xl">
+      <div className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm dark:shadow-xl">
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
             Realized Net Profit / Loss
           </span>
           <div className="flex items-baseline gap-2 mt-1">
             <h2
-              className={`text-3xl font-extrabold font-mono ${
+              className={`text-2xl sm:text-3xl font-extrabold font-mono ${
                 trade.profitLoss > 0
                   ? 'text-emerald-600 dark:text-emerald-400'
                   : trade.profitLoss < 0
@@ -182,34 +182,34 @@ export const TradeDetails = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-6 pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-100 dark:border-[#1f293d]">
           <div>
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
               Risk:Reward
             </span>
-            <p className="text-lg font-bold font-mono text-cyan-600 dark:text-cyan-400 mt-0.5">
+            <p className="text-base sm:text-lg font-bold font-mono text-cyan-600 dark:text-cyan-400 mt-0.5">
               {trade.riskRewardRatio}
             </p>
           </div>
-          <div className="h-8 w-px bg-gray-200 dark:bg-[#1f293d]" />
+          <div className="hidden sm:block h-8 w-px bg-gray-200 dark:bg-[#1f293d]" />
           <div>
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Quantity / Lots
+            <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
+              Lots
             </span>
-            <p className="text-lg font-bold font-mono text-gray-900 dark:text-white mt-0.5">{trade.quantity}</p>
+            <p className="text-base sm:text-lg font-bold font-mono text-gray-900 dark:text-white mt-0.5">{trade.quantity}</p>
           </div>
-          <div className="h-8 w-px bg-gray-200 dark:bg-[#1f293d]" />
+          <div className="hidden sm:block h-8 w-px bg-gray-200 dark:bg-[#1f293d]" />
           <div>
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
               Session
             </span>
-            <p className="text-lg font-bold text-gray-900 dark:text-white mt-0.5">{trade.session || 'London'}</p>
+            <p className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mt-0.5 truncate">{trade.session || 'London'}</p>
           </div>
         </div>
       </div>
 
       {/* Metrics Breakdown Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
         {/* Entry Price */}
         <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
           <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -346,7 +346,7 @@ export const TradeDetails = () => {
           </div>
 
           {trade.aiAnalysis?.setupQualityScore && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center flex-wrap gap-2">
               <span className="text-xs px-2.5 py-1 rounded-full bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 text-cyan-700 dark:text-cyan-400 font-mono text-[11px]">
                 {trade.aiAnalysis.providerUsed || 'Gemini Vision'}
               </span>

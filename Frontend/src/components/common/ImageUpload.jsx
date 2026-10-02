@@ -94,12 +94,12 @@ export const ImageUpload = ({
           />
 
           {/* Action overlay */}
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+          <div className="absolute inset-0 bg-black/40 sm:bg-black/60 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 sm:gap-3">
             {onPreviewClick && (
               <button
                 type="button"
                 onClick={() => onPreviewClick(value)}
-                className="p-2 rounded-xl bg-gray-800/90 text-gray-200 hover:text-white hover:bg-cyan-600 shadow-md transition"
+                className="p-2 rounded-xl bg-gray-900/90 text-gray-200 hover:text-white hover:bg-cyan-600 shadow-md transition"
                 title="Preview full image"
               >
                 <Eye className="w-4 h-4" />
@@ -109,7 +109,7 @@ export const ImageUpload = ({
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="p-2 rounded-xl bg-gray-800/90 text-gray-200 hover:text-white hover:bg-blue-600 shadow-md transition"
+              className="p-2 rounded-xl bg-gray-900/90 text-gray-200 hover:text-white hover:bg-blue-600 shadow-md transition"
               title="Replace image"
             >
               <RefreshCw className="w-4 h-4" />
@@ -118,7 +118,7 @@ export const ImageUpload = ({
             <button
               type="button"
               onClick={() => onChange('')}
-              className="p-2 rounded-xl bg-gray-800/90 text-gray-200 hover:text-white hover:bg-rose-600 shadow-md transition"
+              className="p-2 rounded-xl bg-gray-900/90 text-gray-200 hover:text-white hover:bg-rose-600 shadow-md transition"
               title="Remove image"
             >
               <X className="w-4 h-4" />
@@ -132,7 +132,7 @@ export const ImageUpload = ({
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           onClick={() => !isUploading && fileInputRef.current?.click()}
-          className={`flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-xl cursor-pointer transition-all aspect-video ${
+          className={`flex flex-col items-center justify-center p-4 sm:p-6 border-2 border-dashed rounded-xl cursor-pointer transition-all aspect-video ${
             isDragging
               ? 'border-cyan-500 bg-cyan-500/10 scale-[1.01]'
               : 'border-gray-300 hover:border-cyan-500/60 bg-gray-50 hover:bg-gray-100/70 dark:border-[#1f293d] dark:hover:border-cyan-500/50 dark:bg-[#0d131f]/60 dark:hover:bg-[#0d131f]'

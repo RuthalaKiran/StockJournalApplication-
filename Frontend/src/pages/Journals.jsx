@@ -119,12 +119,12 @@ export const Journals = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header with Title & Add New Trade Button */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-gray-200 dark:border-[#1f293d]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-gray-200 dark:border-[#1f293d]">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2.5">
-            <BookOpen className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2 sm:gap-2.5">
+            <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-600 dark:text-cyan-400 shrink-0" />
             <span>Trading Journals</span>
           </h1>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
@@ -135,7 +135,7 @@ export const Journals = () => {
         {/* Prominent Add New Trade Button */}
         <Link
           to="/journals/new"
-          className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-sm font-semibold shadow-lg shadow-cyan-500/20 active:scale-95 transition"
+          className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-cyan-500/20 active:scale-95 transition"
           id="btn-add-new-trade"
         >
           <PlusCircle className="w-4 h-4" />
@@ -144,8 +144,8 @@ export const Journals = () => {
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="p-4 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-3">
-        <form onSubmit={handleSearchSubmit} className="flex flex-col md:flex-row gap-3">
+      <div className="p-3 sm:p-4 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-2.5 sm:space-y-3">
+        <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-2 sm:gap-3">
           <div className="relative flex-1">
             <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
@@ -159,19 +159,19 @@ export const Journals = () => {
 
           <button
             type="submit"
-            className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-sm transition"
+            className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-sm transition shrink-0"
           >
             Search
           </button>
         </form>
 
         {/* Filter Selectors Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 pt-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-2.5 pt-1">
           {/* Instrument Filter */}
           <select
             value={instrument}
             onChange={(e) => setInstrument(e.target.value)}
-            className="py-1.5 px-2.5 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] text-gray-700 dark:text-gray-300 text-xs focus:outline-none focus:border-cyan-500"
+            className="py-1.5 px-2.5 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] text-gray-700 dark:text-gray-300 text-xs focus:outline-none focus:border-cyan-500 truncate"
           >
             <option value="">All Instruments</option>
             {instrumentsList.map((i) => (
@@ -196,7 +196,7 @@ export const Journals = () => {
           <select
             value={result}
             onChange={(e) => setResult(e.target.value)}
-            className="py-1.5 px-2.5 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] text-gray-700 dark:text-gray-300 text-xs focus:outline-none focus:border-cyan-500"
+            className="py-1.5 px-2.5 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] text-gray-700 dark:text-gray-300 text-xs focus:outline-none focus:border-cyan-500 truncate"
           >
             <option value="">All Results</option>
             <option value="TP">Take Profit (TP)</option>
@@ -221,7 +221,7 @@ export const Journals = () => {
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="py-1.5 px-2.5 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] text-gray-700 dark:text-gray-300 text-xs focus:outline-none focus:border-cyan-500"
+            className="py-1.5 px-2 rounded-xl bg-gray-50 dark:bg-[#0a0e17] border border-gray-200 dark:border-[#1f293d] text-gray-700 dark:text-gray-300 text-xs focus:outline-none focus:border-cyan-500"
           />
 
           {/* Clear Filters Button */}
@@ -236,13 +236,13 @@ export const Journals = () => {
         </div>
       </div>
 
-      {/* Main Table / Empty State */}
+      {/* Main Table / Mobile Card / Empty State */}
       {loading ? (
         <div className="h-64 flex items-center justify-center text-xs text-gray-400 animate-pulse">
           Loading trading journal records...
         </div>
       ) : trades.length === 0 ? (
-        <div className="min-h-[45vh] flex flex-col items-center justify-center text-center p-8 bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl shadow-sm">
+        <div className="min-h-[45vh] flex flex-col items-center justify-center text-center p-6 sm:p-8 bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl shadow-sm">
           <BookOpen className="w-12 h-12 text-cyan-600/40 dark:text-cyan-400/40 mb-3" />
           <h3 className="text-base font-bold text-gray-900 dark:text-white mb-1">No trades found</h3>
           <p className="text-xs text-gray-500 dark:text-gray-400 max-w-sm mb-5 leading-relaxed">
@@ -260,7 +260,79 @@ export const Journals = () => {
         </div>
       ) : (
         <div className="bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl overflow-hidden shadow-sm">
-          <div className="overflow-x-auto">
+          {/* Mobile Trade Cards View (block md:hidden) */}
+          <div className="block md:hidden divide-y divide-gray-100 dark:divide-[#1f293d]/60">
+            {trades.map((t) => (
+              <div key={t._id} className="p-3.5 space-y-2.5 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 transition">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-sm text-gray-900 dark:text-white">{t.instrument}</span>
+                    <Badge variant={t.direction} size="xs">{t.direction}</Badge>
+                    <Badge variant={t.result} size="xs">{t.result}</Badge>
+                  </div>
+                  <span
+                    className={`font-mono font-bold text-sm ${
+                      t.profitLoss > 0
+                        ? 'text-emerald-500 dark:text-emerald-400'
+                        : t.profitLoss < 0
+                        ? 'text-rose-500 dark:text-rose-400'
+                        : 'text-amber-500 dark:text-amber-400'
+                    }`}
+                  >
+                    {t.profitLoss > 0 ? `+$${t.profitLoss}` : `$${t.profitLoss}`}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 text-[11px] text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-[#0a0e17] p-2 rounded-xl border border-gray-100 dark:border-gray-800">
+                  <div>
+                    <span className="block text-[10px] uppercase font-semibold text-gray-400">Entry</span>
+                    <span className="font-mono text-gray-800 dark:text-gray-200">{t.entryPrice}</span>
+                  </div>
+                  <div>
+                    <span className="block text-[10px] uppercase font-semibold text-gray-400">Exit</span>
+                    <span className="font-mono text-gray-800 dark:text-gray-200">{t.exitPrice ?? '—'}</span>
+                  </div>
+                  <div>
+                    <span className="block text-[10px] uppercase font-semibold text-gray-400">R:R</span>
+                    <span className="font-mono text-cyan-600 dark:text-cyan-400 font-semibold">{t.riskRewardRatio}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between text-xs pt-0.5">
+                  <span className="text-[11px] text-gray-400 font-mono">
+                    {new Date(t.entryDate).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <Link
+                      to={`/journals/${t._id}`}
+                      className="px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-gray-800 text-cyan-600 dark:text-cyan-400 font-medium text-xs hover:bg-cyan-50 dark:hover:bg-cyan-950/40 transition"
+                    >
+                      View
+                    </Link>
+                    <Link
+                      to={`/journals/${t._id}/edit`}
+                      className="px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-medium text-xs hover:bg-blue-50 dark:hover:bg-blue-950/40 transition"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => setDeleteId(t._id)}
+                      className="p-1 rounded-lg text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
+                      title="Delete trade"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Table View (hidden md:block) */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="bg-gray-50 dark:bg-[#0e1422] text-gray-500 dark:text-gray-400 uppercase tracking-wider border-b border-gray-200 dark:border-[#1f293d]">
                 <tr>
@@ -353,7 +425,7 @@ export const Journals = () => {
 
           {/* Pagination Controls */}
           {pagination.pages > 1 && (
-            <div className="px-4 py-3 bg-gray-50 dark:bg-[#0e1422] border-t border-gray-200 dark:border-[#1f293d] flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+            <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gray-50 dark:bg-[#0e1422] border-t border-gray-200 dark:border-[#1f293d] flex items-center justify-between text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
               <span>
                 Showing page <strong className="text-gray-900 dark:text-white">{pagination.page}</strong> of{' '}
                 <strong className="text-gray-900 dark:text-white">{pagination.pages}</strong>

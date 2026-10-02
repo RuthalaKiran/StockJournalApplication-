@@ -38,14 +38,14 @@ export const Navbar = ({ onMobileMenuToggle }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full h-16 shrink-0 bg-white/95 dark:bg-[#0a0e17]/95 backdrop-blur-md border-b border-gray-200 dark:border-[#1f293d] transition-colors">
-      <div className="h-full px-4 sm:px-6 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full h-14 sm:h-16 shrink-0 bg-white/95 dark:bg-[#0a0e17]/95 backdrop-blur-md border-b border-gray-200 dark:border-[#1f293d] transition-colors">
+      <div className="h-full px-3 sm:px-6 flex items-center justify-between">
         {/* Left Side: Mobile toggle + Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Mobile hamburger button */}
           <button
             onClick={onMobileMenuToggle}
-            className="md:hidden p-2 rounded-lg text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800/60 transition"
+            className="md:hidden p-1.5 rounded-lg text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800/60 transition"
             aria-label="Toggle navigation drawer"
           >
             <Menu className="w-5 h-5" />
@@ -53,16 +53,16 @@ export const Navbar = ({ onMobileMenuToggle }) => {
 
           <Link
             to="/dashboard"
-            className="flex items-center gap-2.5 group focus:outline-none"
+            className="flex items-center gap-2 sm:gap-2.5 group focus:outline-none"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-              <TrendingUp className="w-5 h-5 text-white" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform shrink-0">
+              <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+              <span className="text-base sm:text-lg font-bold tracking-tight text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors leading-tight">
                 TradeJournal
               </span>
-              <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider font-semibold text-cyan-600 dark:text-cyan-400/80 -mt-1">
+              <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider font-semibold text-cyan-600 dark:text-cyan-400/80 -mt-0.5">
                 Forex Analytics
               </span>
             </div>
@@ -70,29 +70,30 @@ export const Navbar = ({ onMobileMenuToggle }) => {
         </div>
 
         {/* Right Side: Theme Toggle + New Trade Button + User Dropdown */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-1.5 sm:gap-4">
           {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-gray-100 dark:hover:bg-gray-800/60 transition-colors"
+            className="p-1.5 sm:p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-gray-100 dark:hover:bg-gray-800/60 transition-colors"
             title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             aria-label="Toggle dark/light theme"
           >
             {isDark ? (
-              <Sun className="w-5 h-5 text-amber-400 hover:rotate-45 transition-transform duration-300" />
+              <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 hover:rotate-45 transition-transform duration-300" />
             ) : (
-              <Moon className="w-5 h-5 text-cyan-600 hover:-rotate-12 transition-transform duration-300" />
+              <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-600 hover:-rotate-12 transition-transform duration-300" />
             )}
           </button>
 
           {/* Primary + New Trade Button -> Navigates directly to /journals/new */}
           <Link
             to="/journals/new"
-            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium text-sm shadow-md shadow-cyan-500/20 active:scale-95 transition-all"
+            className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium text-xs sm:text-sm shadow-md shadow-cyan-500/20 active:scale-95 transition-all"
             id="nav-new-trade-btn"
           >
-            <PlusCircle className="w-4 h-4 text-cyan-100" />
+            <PlusCircle className="w-4 h-4 text-cyan-100 shrink-0" />
             <span className="hidden xs:inline">New Trade</span>
+            <span className="xs:hidden">Add</span>
           </Link>
 
           {/* User Profile Dropdown */}

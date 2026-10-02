@@ -132,11 +132,11 @@ export const Dashboard = () => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Top Header & Range Filters */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-gray-200 dark:border-[#1f293d]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-gray-200 dark:border-[#1f293d]">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Performance Terminal
           </h1>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
@@ -144,13 +144,13 @@ export const Dashboard = () => {
           </p>
         </div>
 
-        {/* Date Filter Badges */}
-        <div className="flex items-center flex-wrap gap-1.5 p-1 rounded-xl bg-gray-100 dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d]">
+        {/* Date Filter Badges - Horizontal scroll on mobile */}
+        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-gray-100 dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] overflow-x-auto no-scrollbar max-w-full">
           {ranges.map((r) => (
             <button
               key={r.value}
               onClick={() => setRange(r.value)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap shrink-0 transition-all ${
                 range === r.value
                   ? 'bg-cyan-500 text-white font-semibold shadow-sm'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-800/60'
@@ -163,9 +163,9 @@ export const Dashboard = () => {
       </div>
 
       {/* Daily Summary Banner & Streaks */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {/* Today's PnL */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
           <div>
             <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
               Today's Realized P/L
@@ -197,7 +197,7 @@ export const Dashboard = () => {
         </div>
 
         {/* Current Streak */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
           <div>
             <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
               Current Streak
@@ -230,7 +230,7 @@ export const Dashboard = () => {
         </div>
 
         {/* Expectancy */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
           <div>
             <div className="flex items-center gap-1">
               <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -254,7 +254,7 @@ export const Dashboard = () => {
         </div>
 
         {/* Maximum Drawdown */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
           <div>
             <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
               Max Drawdown
@@ -270,14 +270,14 @@ export const Dashboard = () => {
       </div>
 
       {/* Main KPI Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5">
         {/* Total Realized P/L */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
+        <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block truncate">
             Net Realized P/L
           </span>
           <p
-            className={`text-xl font-bold font-mono mt-1.5 ${
+            className={`text-lg sm:text-xl font-bold font-mono mt-1.5 truncate ${
               metrics.totalPnL > 0
                 ? 'text-emerald-500 dark:text-emerald-400'
                 : metrics.totalPnL < 0
@@ -287,71 +287,71 @@ export const Dashboard = () => {
           >
             {metrics.totalPnL > 0 ? `+$${metrics.totalPnL}` : `$${metrics.totalPnL}`}
           </p>
-          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block">Realized net result</span>
+          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block truncate">Realized net result</span>
         </div>
 
         {/* Total Trades */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
+        <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block truncate">
             Total Closed
           </span>
-          <p className="text-xl font-bold text-gray-900 dark:text-white font-mono mt-1.5">
+          <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white font-mono mt-1.5 truncate">
             {metrics.totalTrades || 0}
           </p>
-          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block">
+          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block truncate">
             {metrics.winningTrades}W · {metrics.losingTrades}L · {metrics.breakEvenTrades}BE
           </span>
         </div>
 
         {/* Win Rate */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
+        <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block truncate">
             Win Rate
           </span>
-          <p className="text-xl font-bold text-emerald-500 dark:text-emerald-400 font-mono mt-1.5">
+          <p className="text-lg sm:text-xl font-bold text-emerald-500 dark:text-emerald-400 font-mono mt-1.5 truncate">
             {metrics.winRate}%
           </p>
-          <span className="text-[10px] text-rose-500/80 dark:text-rose-400/80 mt-1 block">
+          <span className="text-[10px] text-rose-500/80 dark:text-rose-400/80 mt-1 block truncate">
             Loss Rate: {metrics.lossRate}%
           </span>
         </div>
 
         {/* Profit Factor */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
+        <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block truncate">
             Profit Factor
           </span>
-          <p className="text-xl font-bold text-gray-900 dark:text-white font-mono mt-1.5">
+          <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white font-mono mt-1.5 truncate">
             {metrics.profitFactor !== null ? metrics.profitFactor : '—'}
           </p>
-          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block">Gross Win / Gross Loss</span>
+          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block truncate">Gross Win / Gross Loss</span>
         </div>
 
         {/* Average Win */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
+        <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block truncate">
             Average Win
           </span>
-          <p className="text-xl font-bold text-emerald-500 dark:text-emerald-400 font-mono mt-1.5">
+          <p className="text-lg sm:text-xl font-bold text-emerald-500 dark:text-emerald-400 font-mono mt-1.5 truncate">
             +${metrics.averageWin || 0}
           </p>
-          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block">Per winning trade</span>
+          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block truncate">Per winning trade</span>
         </div>
 
         {/* Average Loss */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
+        <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 block truncate">
             Average Loss
           </span>
-          <p className="text-xl font-bold text-rose-500 dark:text-rose-400 font-mono mt-1.5">
+          <p className="text-lg sm:text-xl font-bold text-rose-500 dark:text-rose-400 font-mono mt-1.5 truncate">
             ${metrics.averageLoss || 0}
           </p>
-          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block">Per losing trade</span>
+          <span className="text-[10px] text-gray-400 dark:text-gray-500 mt-1 block truncate">Per losing trade</span>
         </div>
       </div>
 
       {/* Chart Section: Equity Curve + Win/Loss Distribution */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Equity Curve (2 Cols) */}
         <div className="lg:col-span-2 p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
@@ -510,7 +510,7 @@ export const Dashboard = () => {
       </div>
 
       {/* Daily Realized PnL Bar Chart */}
-      <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
+      <div className="p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <BarChart2 className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
@@ -573,15 +573,15 @@ export const Dashboard = () => {
       </div>
 
       {/* Buy vs Sell Performance Breakdown */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {/* BUY Side */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 dark:text-emerald-400">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 dark:text-emerald-400 shrink-0">
               <ArrowUpRight className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider">
+              <span className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider block">
                 BUY Performance
               </span>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
@@ -606,13 +606,13 @@ export const Dashboard = () => {
         </div>
 
         {/* SELL Side */}
-        <div className="p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-500 dark:text-rose-400">
+            <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-500 dark:text-rose-400 shrink-0">
               <ArrowDownRight className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider">
+              <span className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider block">
                 SELL Performance
               </span>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
@@ -638,8 +638,8 @@ export const Dashboard = () => {
       </div>
 
       {/* Deep Analytics Sub-Sections Tabs */}
-      <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
-        <div className="flex items-center justify-between border-b border-gray-200 dark:border-[#1f293d] pb-3">
+      <div className="p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-200 dark:border-[#1f293d] pb-3">
           <div className="flex items-center gap-2">
             <Layers className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
             <h2 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
@@ -647,7 +647,7 @@ export const Dashboard = () => {
             </h2>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar max-w-full">
             <button
               onClick={() => setActiveTab('instruments')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
@@ -790,7 +790,7 @@ export const Dashboard = () => {
       </div>
 
       {/* Recent Trades Table */}
-      <div className="p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
+      <div className="p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />

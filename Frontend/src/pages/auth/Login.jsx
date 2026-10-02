@@ -46,21 +46,21 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#0a0e17] flex items-center justify-center p-4">
+    <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0a0e17] flex items-center justify-center p-3.5 sm:p-4">
       {/* Background glow effects */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl p-8 shadow-xl dark:shadow-2xl">
+      <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1f293d] rounded-2xl p-5 sm:p-8 shadow-xl dark:shadow-2xl">
         {/* Terminal Header */}
-        <div className="flex flex-col items-center text-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/25 mb-3">
-            <TrendingUp className="w-7 h-7 text-white" />
+        <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/25 mb-3">
+            <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">TradeJournal</h1>
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">TradeJournal</h1>
           <p className="text-xs uppercase tracking-wider text-cyan-600 dark:text-cyan-400 font-semibold mt-1">
             Forex Trading Journal & Analytics
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-2">
             Sign in to access your trading logs and performance terminal.
           </p>
         </div>
