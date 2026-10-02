@@ -10,7 +10,7 @@ export class GeminiProvider {
   constructor() {
     this.apiKey = process.env.GEMINI_API_KEY || '';
     this.name = 'gemini';
-    this.modelName = 'gemini-1.5-flash';
+    this.modelName = 'gemini-3.1-flash-lite';
   }
 
   isAvailable() {

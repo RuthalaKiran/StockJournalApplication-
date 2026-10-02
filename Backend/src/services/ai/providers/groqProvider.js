@@ -4,7 +4,7 @@ export class GroqProvider {
   constructor() {
     this.apiKey = process.env.GROQ_API_KEY || '';
     this.name = 'groq';
-    this.modelName = 'llama-3.3-70b-versatile';
+    this.modelName = 'openai/gpt-oss-120b';
   }
 
   isAvailable() {

@@ -14,6 +14,7 @@ import { NewTrade } from './pages/NewTrade';
 import { TradeDetails } from './pages/TradeDetails';
 import { Calendar } from './pages/Calendar';
 import { Settings } from './pages/Settings';
+import { AICoach } from './pages/AICoach';
 
 export function App() {
   return (
@@ -42,6 +43,8 @@ export function App() {
                 <Route path="/journals/:id" element={<TradeDetails />} />
                 <Route path="/journals/:id/edit" element={<NewTrade />} />
                 <Route path="/calendar" element={<Calendar />} />
+                <Route path="/coach" element={<AICoach />} />
+                <Route path="/ai-coach" element={<Navigate to="/coach" replace />} />
                 <Route path="/settings" element={<Settings />} />
               </Route>
 

@@ -51,3 +51,6 @@ export const authenticateUser = async (req, res, next) => {
     });
   }
 };
+
+export const protectRoute = authenticateUser;
+

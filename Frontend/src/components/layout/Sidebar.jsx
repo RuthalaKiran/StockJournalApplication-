@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   BookOpen,
   Calendar,
+  Bot,
   X,
   PlusCircle,
 } from 'lucide-react';
@@ -27,6 +28,12 @@ export const Sidebar = ({ mobileOpen, onMobileClose }) => {
       path: '/calendar',
       icon: Calendar,
       badge: null,
+    },
+    {
+      name: 'AI Coach',
+      path: '/coach',
+      icon: Bot,
+      badge: 'AI',
     },
   ];
 
@@ -74,7 +81,18 @@ export const Sidebar = ({ mobileOpen, onMobileClose }) => {
                           : 'text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300'
                       }`}
                     />
-                    <span>{item.name}</span>
+                    <span className="flex-1 text-left">{item.name}</span>
+                    {item.badge && (
+                      <span
+                        className={`text-[10px] font-bold tracking-wider px-2 py-0.5 rounded-full uppercase transition-colors ${
+                          isActive
+                            ? 'bg-cyan-600 text-white dark:bg-cyan-500 dark:text-black font-extrabold shadow-sm'
+                            : 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/80 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800/60'
+                        }`}
+                      >
+                        {item.badge}
+                      </span>
+                    )}
                   </>
                 )}
               </NavLink>
