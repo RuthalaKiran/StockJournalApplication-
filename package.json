@@ -1,0 +1,25 @@
+{
+  "name": "tradejournal-workspace",
+  "version": "1.0.0",
+  "description": "TradeJournal - Forex Trading Journal & Performance Analytics Web Application",
+  "scripts": {
+    "dev:backend": "npm --prefix Backend run dev",
+    "dev:frontend": "npm --prefix Frontend run dev",
+    "install:all": "npm --prefix Backend install && npm --prefix Frontend install",
+    "seed": "npm --prefix Backend run seed",
+    "test:backend": "npm --prefix Backend test",
+    "build:frontend": "npm --prefix Frontend run build"
+  },
+  "keywords": [
+    "forex",
+    "trading",
+    "journal",
+    "analytics",
+    "metrics",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC"
+}

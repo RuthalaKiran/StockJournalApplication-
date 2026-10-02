@@ -1,0 +1,53 @@
+services:
+  # ==============================================================
+  # 1. Backend API Web Service (Node.js / Express)
+  # ==============================================================
+  - type: web
+    name: tradejournal-backend
+    runtime: node
+    plan: free
+    branch: main
+    rootDir: Backend
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CLIENT_URL
+        fromService:
+          type: web
+          name: tradejournal-frontend
+          property: host
+
+  # ==============================================================
+  # 2. Frontend Single Page App (React / Vite Static Site)
+  # ==============================================================
+  - type: web
+    name: tradejournal-frontend
+    runtime: static
+    plan: free
+    branch: main
+    rootDir: Frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeploy: true
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: tradejournal-backend
+          property: host
