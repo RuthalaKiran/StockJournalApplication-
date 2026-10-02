@@ -24,10 +24,7 @@ services:
       - key: JWT_EXPIRES_IN
         value: 7d
       - key: CLIENT_URL
-        fromService:
-          type: web
-          name: tradejournal-frontend
-          property: host
+        value: https://tradejournal-frontend-9ha8.onrender.com
 
   # ==============================================================
   # 2. Frontend Single Page App (React / Vite Static Site)
@@ -46,7 +43,5 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: tradejournal-backend
-          property: host
+        value: https://tradejournal-backend-sbqp.onrender.com/api
+
